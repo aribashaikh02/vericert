@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portal – VeriCert</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<!-- QR Modal -->
+<div class="modal-overlay" id="qr-modal">
+  <div class="modal-box">
+    <h3>Certificate QR Code</h3>
+    <p>Scan to verify this certificate</p>
+    <div id="qr-output"></div>
+    <div class="modal-id" id="qr-modal-id"></div>
+    <button class="modal-close" onclick="vcCloseQR()">Close</button>
+  </div>
+</div>
+
+<nav>
+  <a class="logo" href="index.html"><span>Veri</span>Cert</a>
+  <div class="nav-links">
+    <span style="font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-right:4px;" id="nav-email"></span>
+    <button class="btn btn-ghost" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="wide-content">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:14px;">
+      <div>
+        <div style="font-size:1.3rem;font-weight:800;">
+          Welcome, <span style="color:var(--accent)" id="student-name">—</span>
+        </div>
+        <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:3px;">
+          // Your certificate portfolio
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('my-certs', this)">My Certificates</div>
+      <div class="tab"        onclick="switchTab('catalogue', this)">Certificate Catalogue</div>
+    </div>
+
+    <!-- My Certificates -->
+    <div class="tab-panel active" id="my-certs">
+      <div id="my-certs-list"></div>
+    </div>
+
+    <!-- Catalogue -->
+    <div class="tab-panel" id="catalogue">
+      <div id="catalogue-grid" class="cat-grid"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/student.js"></script>
+</body>
+</html>

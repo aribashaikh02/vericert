@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeriCert – Secure Digital Certificate Verification</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span>Veri</span>Cert</a>
+  <div class="nav-links">
+    <a class="btn btn-ghost"          href="verify.html">Verify</a>
+    <a class="btn btn-outline-accent" href="login.html?role=student">Student Portal</a>
+    <a class="btn btn-primary"        href="login.html?role=admin">Admin</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <section class="hero" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 24px;text-align:center;">
+    <div class="hero-badge">⬡ Secure · Verifiable · Trusted</div>
+
+    <h1 style="font-size:clamp(3rem,8vw,5.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:6px;">
+      <span style="color:var(--accent)">Veri</span>Cert
+    </h1>
+
+    <p style="font-family:var(--mono);font-size:clamp(.82rem,2vw,.95rem);color:var(--muted);margin:22px 0 44px;max-width:460px;border-left:2px solid var(--accent);padding-left:14px;text-align:left;">
+      Fake certificates shouldn't exist in 2026.
+    </p>
+
+    <div class="hero-btns" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <a class="btn btn-primary"        href="verify.html"            style="font-size:.82rem;padding:13px 28px;">Verify Certificate</a>
+      <a class="btn btn-outline-accent" href="login.html?role=student" style="font-size:.82rem;padding:13px 28px;">Student Portal</a>
+      <a class="btn btn-ghost"          href="login.html?role=admin"   style="font-size:.82rem;padding:13px 28px;">Admin Login</a>
+    </div>
+
+    <div class="stats-row" style="display:flex;gap:44px;margin-top:72px;padding-top:44px;border-top:1px solid var(--border);flex-wrap:wrap;justify-content:center;">
+      <div class="stat">
+        <div class="stat-num" id="stat-issued" style="font-family:var(--mono);font-size:1.7rem;color:var(--accent);font-weight:700;">—</div>
+        <div class="stat-label" style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;">Certificates Issued</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-students" style="font-family:var(--mono);font-size:1.7rem;color:var(--accent);font-weight:700;">—</div>
+        <div class="stat-label" style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;">Students Enrolled</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="font-family:var(--mono);font-size:1.7rem;color:var(--accent);font-weight:700;">SHA-256</div>
+        <div class="stat-label" style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;">Hash Algorithm</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="js/data.js"></script>
+<script>
+  document.getElementById('stat-issued').textContent   = getCerts().length;
+  document.getElementById('stat-students').textContent = getStudents().length;
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – VeriCert</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<!-- QR Modal -->
+<div class="modal-overlay" id="qr-modal">
+  <div class="modal-box">
+    <h3>Certificate QR Code</h3>
+    <p>Scan to verify this certificate</p>
+    <div id="qr-output"></div>
+    <div class="modal-id" id="qr-modal-id"></div>
+    <button class="modal-close" onclick="vcCloseQR()">Close</button>
+  </div>
+</div>
+
+<nav>
+  <a class="logo" href="index.html"><span>Veri</span>Cert</a>
+  <div class="nav-links">
+    <button class="btn btn-ghost" onclick="adminLogout()">Logout</button>
+  </div>
+</nav>
+
+<div class="dash-layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-label">Manage</div>
+    <a class="nav-item active" onclick="switchTab('tab-issue',     this)"><span class="icon">✦</span>Issue Certificate</a>
+    <a class="nav-item"        onclick="switchTab('tab-certs',     this)"><span class="icon">◈</span>All Certificates</a>
+    <a class="nav-item"        onclick="switchTab('tab-students',  this)"><span class="icon">◉</span>Students</a>
+    <a class="nav-item"        onclick="switchTab('tab-catalogue', this)"><span class="icon">▦</span>Catalogue</a>
+  </div>
+
+  <!-- Main area -->
+  <div class="dash-main">
+
+    <!-- ── Issue Certificate ── -->
+    <div class="dash-section active" id="tab-issue">
+      <div class="section-title">Issue Certificate</div>
+      <div class="section-sub">// Assign a verified certificate to a student</div>
+      <div class="form-card">
+        <div class="field">
+          <label>Student</label>
+          <select id="f-student"><option value="">— Select student —</option></select>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Course / Certificate Title</label><input id="f-course" placeholder="e.g. Full Stack Development" /></div>
+          <div class="field"><label>Issuing Institution</label><input id="f-inst" placeholder="e.g. Tech University" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Issue Date</label><input type="date" id="f-date" /></div>
+          <div class="field"><label>Certificate ID</label><input id="f-id" readonly /></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" onclick="refreshId()">⟳ New ID</button>
+          <button class="btn btn-success"      onclick="issueCert()">Issue Certificate</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── All Certificates ── -->
+    <div class="dash-section" id="tab-certs">
+      <div class="section-title">All Certificates</div>
+      <div class="section-sub">// Full registry</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Cert ID</th><th>Student</th><th>Course</th>
+            <th>Institution</th><th>Date</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="certs-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Students ── -->
+    <div class="dash-section" id="tab-students">
+      <div class="section-title">Students</div>
+      <div class="section-sub">// Manage enrolled students</div>
+      <div class="form-card" style="margin-bottom:22px;">
+        <div class="form-row">
+          <div class="field"><label>Full Name</label><input id="s-name"  placeholder="Student full name" /></div>
+          <div class="field"><label>Email</label>    <input id="s-email" placeholder="student@uni.edu"   /></div>
+        </div>
+        <button class="btn btn-purple btn-sm" onclick="addStudent()">+ Add Student</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Password</th><th>Certificates</th></tr></thead>
+          <tbody id="students-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Catalogue ── -->
+    <div class="dash-section" id="tab-catalogue">
+      <div class="section-title">Certificate Catalogue</div>
+      <div class="section-sub">// Programmes students can browse and obtain</div>
+      <div class="form-card" style="margin-bottom:22px;">
+        <div class="form-row">
+          <div class="field"><label>Programme Title</label><input id="cat-title" placeholder="e.g. Data Science"  /></div>
+          <div class="field"><label>Institution</label>    <input id="cat-inst"  placeholder="e.g. Tech University" /></div>
+        </div>
+        <div class="field"><label>Description</label><input id="cat-desc" placeholder="Short description" /></div>
+        <div class="form-row">
+          <div class="field"><label>Icon (emoji)</label>  <input id="cat-icon" placeholder="🎓" /></div>
+          <div class="field"><label>Tag / Category</label><input id="cat-tag"  placeholder="e.g. Technology" /></div>
+        </div>
+        <button class="btn btn-purple btn-sm" onclick="addCatItem()">+ Add to Catalogue</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Programme</th><th>Institution</th><th>Tag</th><th></th></tr></thead>
+          <tbody id="cat-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /dash-main -->
+</div><!-- /dash-layout -->
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

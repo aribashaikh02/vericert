@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Certificate – VeriCert</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span>Veri</span>Cert</a>
+  <div class="nav-links">
+    <a class="btn btn-ghost" href="index.html">← Home</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="content">
+    <div class="page-title">Verify Certificate</div>
+    <div class="page-sub">// Public verification — no login required</div>
+
+    <div class="verify-card">
+      <div class="field">
+        <label>Certificate ID</label>
+        <input type="text" id="verify-input" placeholder="e.g. VC-2026-ABCD1234" autocomplete="off" />
+      </div>
+      <button class="btn btn-primary" style="width:100%;padding:13px;" onclick="doVerify()">
+        Verify Certificate
+      </button>
+    </div>
+
+    <div id="verify-result"></div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/verify.js"></script>
+</body>
+</html>

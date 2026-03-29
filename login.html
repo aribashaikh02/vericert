@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login – VeriCert</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span>Veri</span>Cert</a>
+  <div class="nav-links">
+    <a class="btn btn-ghost" href="index.html">← Home</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="login-wrap">
+    <div class="login-card">
+
+      <!-- Role tabs -->
+      <div class="login-tabs">
+        <div class="ltab active" id="ltab-student" onclick="setMode('student')">Student</div>
+        <div class="ltab"        id="ltab-admin"   onclick="setMode('admin')">Admin</div>
+      </div>
+
+      <h2 id="login-title">Student Portal</h2>
+      <div class="sub" id="login-sub">// Log in to view your certificates</div>
+
+      <div class="field" style="margin-top:20px;">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="student@university.edu" />
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="login-pass" placeholder="••••••••" />
+      </div>
+
+      <button class="btn btn-primary btn-full" onclick="doLogin()">Login</button>
+
+      <div class="err-msg"  id="login-err"></div>
+      <div class="demo-hint" id="login-hint">
+        Demo students: aisha@uni.edu / pass123 &nbsp;|&nbsp; rahul@uni.edu / pass123
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
